@@ -13,7 +13,7 @@ class CreateApplicantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('villa', function (Blueprint $table) {
+        Schema::create('villas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('image')->nullable();
@@ -33,6 +33,6 @@ class CreateApplicantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('villa');
+        Schema::dropIfExists('villas');
     }
 }

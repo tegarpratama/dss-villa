@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Applicant;
+use App\Villa;
 use App\User;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $applicants = Applicant::count();
+        $villas = Villa::count();
         $admins = User::count();
 
         return view('pages.dashboard.index', [
-            'applicants' => $applicants,
+            'villas' => $villas,
             'admins' => $admins
         ]);
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ApplicantRequest;
-use App\Applicant;
+use App\Villa;
 use App\EducationCriteria;
 use App\ExperienceCriteria;
 use App\InterviewCriteria;
@@ -12,7 +12,7 @@ use App\MajorCriteria;
 use App\Result;
 use PDF;
 
-class ApplicantController extends Controller
+class VillaController extends Controller
 {
     public function index()
     {
