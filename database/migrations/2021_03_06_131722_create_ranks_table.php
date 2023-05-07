@@ -15,13 +15,13 @@ class CreateRanksTable extends Migration
     {
         Schema::create('ranks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicant_id')->constrained()->onDelete('cascade');
-            $table->float('education_result');
-            $table->float('major_result');
-            $table->float('experience_result');
-            $table->float('interview_result');
+            $table->foreignId('villa_id')->onDelete('cascade');
+            $table->float('price_result');
+            $table->float('location_result');
+            $table->float('facility_result');
+            $table->float('hygiene_result');
+            $table->float('security_result');
             $table->float('total');
-            $table->timestamps();
         });
     }
 

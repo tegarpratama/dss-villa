@@ -15,12 +15,12 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicant_id')->constrained()->onDelete('cascade');
-            $table->float('education_score');
-            $table->float('major_score');
-            $table->float('experience_score');
-            $table->float('interview_score');
-            $table->timestamps();
+            $table->foreignId('villa_id')->onDelete('cascade');
+            $table->float('price_score');
+            $table->float('location_score');
+            $table->float('facility_score');
+            $table->float('hygiene_score');
+            $table->float('security_score');
         });
     }
 

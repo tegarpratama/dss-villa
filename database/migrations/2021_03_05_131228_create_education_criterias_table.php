@@ -13,12 +13,10 @@ class CreateEducationCriteriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('education_criterias', function (Blueprint $table) {
+        Schema::create('facility_criterias', function (Blueprint $table) {
             $table->id();
-            $table->string('education');
-            $table->enum('linguistic_value', ['Sangat Rendah', 'Rendah', 'Cukup', 'Baik', 'Sangat Baik']);
+            $table->enum('linguistic_value', ['Sangat Kurang Lengkap', 'Kurang Lengkap', 'Cukup Lengkap', 'Lengkap', 'Sangat Lengkap']);
             $table->float('score');
-            $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateEducationCriteriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('education_criterias');
+        Schema::dropIfExists('facility_criterias');
     }
 }

@@ -13,14 +13,16 @@ class CreateApplicantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('applicants', function (Blueprint $table) {
+        Schema::create('villa', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('education_criteria_id')->constrained();
-            $table->foreignId('major_criteria_id')->constrained();
-            $table->foreignId('experience_criteria_id')->constrained();
-            $table->integer('interview_score');
-            $table->timestamps();
+            $table->text('image')->nullable();
+            $table->text('description')->nullable();
+            $table->foreignId('price_criteria_id');
+            $table->foreignId('location_criteria_id');
+            $table->foreignId('facility_criteria_id');
+            $table->foreignId('hygiene_criteria_id');
+            $table->foreignId('security_criteria_id');
         });
     }
 
@@ -31,6 +33,6 @@ class CreateApplicantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('applicants');
+        Schema::dropIfExists('villa');
     }
 }

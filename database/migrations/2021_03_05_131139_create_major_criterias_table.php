@@ -13,12 +13,10 @@ class CreateMajorCriteriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('major_criterias', function (Blueprint $table) {
+        Schema::create('price_criterias', function (Blueprint $table) {
             $table->id();
-            $table->string('major');
-            $table->enum('linguistic_value', ['Sangat Rendah', 'Rendah', 'Cukup', 'Baik', 'Sangat Baik']);
+            $table->enum('linguistic_value', ['Rp500.000 - Rp999.000', 'Rp1.000.000 - Rp1.499.000', 'Rp1.500.000 - Rp.1.999.000', 'Rp2.000.000 - Rp2.499.000', 'Rp2.500.000 - Rp3.000.000']);
             $table->float('score');
-            $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateMajorCriteriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('major_criterias');
+        Schema::dropIfExists('price_criterias');
     }
 }

@@ -12,10 +12,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(AdminSeeder::class);
-        $this->call(AcceptanceCriteriaSeeder::class);
-        $this->call(EducationCriteriaSeeder::class);
-        $this->call(ExperienceCriteriaSeeder::class);
-        $this->call(InterviewCriteriaSeeder::class);
-        $this->call(MajorCriteriaSeeder::class);
+        $this->call(MasterCriteriaSeeder::class);
+        $this->call(PriceCriteriaSeeder::class);
+        $this->call(LocationCriteriaSeeder::class);
+        $this->call(FacilityCriteriaSeeder::class);
+        $this->call(HygieneCriteriaSeeder::class);
+        $this->call(SecurityCriteriaSeeder::class);
     }
 }

@@ -13,13 +13,10 @@ class CreateInterviewCriteriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('interview_criterias', function (Blueprint $table) {
+        Schema::create('location_criterias', function (Blueprint $table) {
             $table->id();
-            $table->integer('min_param');
-            $table->integer('max_param');
-            $table->enum('linguistic_value', ['Sangat Rendah', 'Rendah', 'Cukup', 'Baik', 'Sangat Baik']);
+            $table->enum('linguistic_value', ['0 - 499 M', '500 - 999 M', '1 - 1.4 Km', '1.5 - 1.9 Km', '2 - 2.5 Km']);
             $table->float('score');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +27,6 @@ class CreateInterviewCriteriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('interview_criterias');
+        Schema::dropIfExists('location_criterias');
     }
 }

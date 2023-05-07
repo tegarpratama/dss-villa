@@ -13,12 +13,10 @@ class CreateExperienceCriteriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('experience_criterias', function (Blueprint $table) {
+        Schema::create('hygiene_criterias', function (Blueprint $table) {
             $table->id();
-            $table->string('experience');
-            $table->enum('linguistic_value', ['Sangat Rendah', 'Rendah', 'Cukup', 'Baik', 'Sangat Baik']);
+            $table->enum('linguistic_value', ['Sangat Kotor', 'Kotor', 'Cukup', 'Bersih', 'Sangat Bersih']);
             $table->float('score');
-            $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateExperienceCriteriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('experience_criterias');
+        Schema::dropIfExists('hygiene_criterias');
     }
 }

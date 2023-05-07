@@ -13,12 +13,11 @@ class CreateAcceptanceCriteriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('acceptance_criterias', function (Blueprint $table) {
+        Schema::create('master_criterias', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->enum('criteria', ['Pendidikan', 'Jurusan', 'Wawancara', 'Pengalaman']);
+            $table->enum('criteria', ['Harga Sewa', 'Lokasi', 'Fasilitas', 'Kebersihan', 'Keamanan']);
             $table->float('score');
-            $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateAcceptanceCriteriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('acceptance_criterias');
+        Schema::dropIfExists('master_criterias');
     }
 }
