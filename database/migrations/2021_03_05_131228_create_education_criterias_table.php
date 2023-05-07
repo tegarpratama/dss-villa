@@ -15,7 +15,7 @@ class CreateEducationCriteriasTable extends Migration
     {
         Schema::create('facility_criterias', function (Blueprint $table) {
             $table->id();
-            $table->enum('linguistic_value', ['Sangat Kurang Lengkap', 'Kurang Lengkap', 'Cukup Lengkap', 'Lengkap', 'Sangat Lengkap']);
+            $table->string('linguistic_value', 100);
             $table->float('score');
         });
     }

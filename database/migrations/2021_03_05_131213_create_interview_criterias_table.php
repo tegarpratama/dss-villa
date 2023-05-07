@@ -15,7 +15,7 @@ class CreateInterviewCriteriasTable extends Migration
     {
         Schema::create('location_criterias', function (Blueprint $table) {
             $table->id();
-            $table->enum('linguistic_value', ['0 - 499 M', '500 - 999 M', '1 - 1.4 Km', '1.5 - 1.9 Km', '2 - 2.5 Km']);
+            $table->string('linguistic_value', 100);
             $table->float('score');
         });
     }

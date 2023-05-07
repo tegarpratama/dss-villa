@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="row">
-    <div class="col-8">
+    <div class="col">
         <div class="card p-4">
             <div class="row">
                 <div class="col">
-                    <h4>Data Kriteria Pengalaman</h4>
+                    <h4>Data Kriteria Lokasi</h4>
                 </div>
             </div>
 
@@ -24,26 +24,24 @@
                 <div class="col">
                     <table class="table text-center">
                         <thead>
-                            <th>Pengalaman</th>
-                            <th>Nilai Linguistik</th>
-                            <th>Nilai</th>
+                            <th>Variabel</th>
+                            <th>Bobot</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
-                            @forelse ($experiences as $experience)
+                            @forelse ($location as $p)
                                 <tr>
-                                    <td>{{ $experience->experience }}</td>
-                                    <td>{{ $experience->linguistic_value }}</td>
-                                    <td>{{ $experience->score }}</td>
+                                    <td>{{ $p->linguistic_value }}</td>
+                                    <td>{{ $p->score }}</td>
                                     <td>
-                                        <a class="btn btn-warning btn-sm text-white" href="{{ route('pengalaman.edit', $experience->id) }}">
+                                        <a class="btn btn-warning btn-sm text-white" href="{{ route('lokasi.edit', $p->id) }}">
                                             <i class="icon-pencil"></i>
                                         </a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">Data Kriteria Pengalaman Kosong</td>
+                                    <td colspan="4">Data Kriteria Lokasi Kosong</td>
                                 </tr>
                             @endforelse
                         </tbody>

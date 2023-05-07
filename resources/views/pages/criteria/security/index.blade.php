@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="row">
-    <div class="col-8">
+    <div class="col">
         <div class="card p-4">
             <div class="row">
                 <div class="col">
-                    <h4>Data Kriteria Interview</h4>
+                    <h4>Data Kriteria Keamanan</h4>
                 </div>
             </div>
 
@@ -24,26 +24,24 @@
                 <div class="col">
                     <table class="table text-center">
                         <thead>
-                            <th>Parameter Ukuran</th>
-                            <th>Nilai Linguistik</th>
-                            <th>Nilai</th>
+                            <th>Variabel</th>
+                            <th>Bobot</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
-                            @forelse ($interviews as $interview)
+                            @forelse ($security as $p)
                                 <tr>
-                                    <td>{{ $interview->min_param }} - {{ $interview->max_param }}</td>
-                                    <td>{{ $interview->linguistic_value }}</td>
-                                    <td>{{ $interview->score }}</td>
+                                    <td>{{ $p->linguistic_value }}</td>
+                                    <td>{{ $p->score }}</td>
                                     <td>
-                                        <a class="btn btn-warning btn-sm text-white" href="{{ route('wawancara.edit', $interview->id) }}">
+                                        <a class="btn btn-warning btn-sm text-white" href="{{ route('keamanan.edit', $p->id) }}">
                                             <i class="icon-pencil"></i>
                                         </a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">Data Kriteria Interview Kosong</td>
+                                    <td colspan="4">Data Kriteria keamanan Kosong</td>
                                 </tr>
                             @endforelse
                         </tbody>

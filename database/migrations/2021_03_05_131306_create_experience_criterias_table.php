@@ -15,7 +15,7 @@ class CreateExperienceCriteriasTable extends Migration
     {
         Schema::create('hygiene_criterias', function (Blueprint $table) {
             $table->id();
-            $table->enum('linguistic_value', ['Sangat Kotor', 'Kotor', 'Cukup', 'Bersih', 'Sangat Bersih']);
+            $table->string('linguistic_value', 100);
             $table->float('score');
         });
     }

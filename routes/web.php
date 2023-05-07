@@ -34,11 +34,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/cetak-penginapan', 'PrintController@printVilla')->name('cetak.penginapan');
 
     // Kriteria
-    Route::resource('/kriteria/penerimaan', 'AcceptanceCriteriaController');
-    Route::resource('/kriteria/jurusan', 'MajorCriteriaController');
-    Route::resource('/kriteria/pendidikan', 'EducationCriteriaController');
-    Route::resource('/kriteria/pengalaman', 'ExperienceCriteriaController');
-    Route::resource('/kriteria/wawancara', 'InterviewCriteriaController');
+    Route::resource('/kriteria/harga', 'PriceCriteriaController');
+    Route::resource('/kriteria/lokasi', 'LocationCriteriaController');
+    Route::resource('/kriteria/fasilitas', 'FacilityCriteriaController');
+    Route::resource('/kriteria/kebersihan', 'HygieneCriteriaController');
+    Route::resource('/kriteria/keamanan', 'SecurityCriteriaController');
 
     // Nilai
     Route::resource('/nilai', 'ResultController');

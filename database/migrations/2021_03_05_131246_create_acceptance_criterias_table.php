@@ -16,7 +16,7 @@ class CreateAcceptanceCriteriasTable extends Migration
         Schema::create('master_criterias', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->enum('criteria', ['Harga Sewa', 'Lokasi', 'Fasilitas', 'Kebersihan', 'Keamanan']);
+            $table->string('criteria', 100);
             $table->float('score');
         });
     }

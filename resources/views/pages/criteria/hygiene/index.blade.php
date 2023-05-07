@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="row">
-    <div class="col-8">
+    <div class="col">
         <div class="card p-4">
             <div class="row">
                 <div class="col">
-                    <h4>Data Kriteria Jurusan</h4>
+                    <h4>Data Kriteria Kebersihan</h4>
                 </div>
             </div>
 
@@ -24,26 +24,24 @@
                 <div class="col">
                     <table class="table text-center">
                         <thead>
-                            <th>Jurusan</th>
-                            <th>Nilai Linguistik</th>
-                            <th>Nilai</th>
+                            <th>Variabel</th>
+                            <th>Bobot</th>
                             <th>Aksi</th>
                         </thead>
                         <tbody>
-                            @forelse ($majors as $major)
+                            @forelse ($hygiene as $p)
                                 <tr>
-                                    <td>{{ $major->major }}</td>
-                                    <td>{{ $major->linguistic_value }}</td>
-                                    <td>{{ $major->score }}</td>
+                                    <td>{{ $p->linguistic_value }}</td>
+                                    <td>{{ $p->score }}</td>
                                     <td>
-                                        <a href="{{ route('jurusan.edit', $major->id) }}">
+                                        <a class="btn btn-warning btn-sm text-white" href="{{ route('kebersihan.edit', $p->id) }}">
                                             <i class="icon-pencil"></i>
                                         </a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4">Data Kriteria Jurusan Kosong</td>
+                                    <td colspan="4">Data Kriteria Kebersihan Kosong</td>
                                 </tr>
                             @endforelse
                         </tbody>

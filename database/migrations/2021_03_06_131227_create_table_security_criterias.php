@@ -15,7 +15,7 @@ class CreateTableSecurityCriterias extends Migration
     {
         Schema::create('security_criterias', function (Blueprint $table) {
             $table->id();
-            $table->enum('linguistic_value', ['Sangat Tidak Aman', 'Kurang Aman', 'Cukup Aman', 'Aman', 'Sangat Aman']);
+            $table->string('linguistic_value', 100);
             $table->float('score');
         });
     }

@@ -21,11 +21,11 @@
                     <i class="icon-settings menu-icon"></i><span class="nav-text">Kriteria</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{ route('penerimaan.index') }}">Penerimaan</a></li>
-                    <li><a href="{{ route('jurusan.index') }}">Jurusan</a></li>
-                    <li><a href="{{ route('pendidikan.index') }}">Pendidikan</a></li>
-                    <li><a href="{{ route('pengalaman.index') }}">Pengalaman</a></li>
-                    <li><a href="{{ route('wawancara.index') }}">Wawancara</a></li>
+                    <li><a href="{{ route('harga.index') }}">Harga Sewa</a></li>
+                    <li><a href="{{ route('lokasi.index') }}">Lokasi</a></li>
+                    <li><a href="{{ route('fasilitas.index') }}">Fasilitas</a></li>
+                    <li><a href="{{ route('kebersihan.index') }}">Kebersihan</a></li>
+                    <li><a href="{{ route('keamanan.index') }}">Keamanan</a></li>
                 </ul>
             </li>
             <li>
