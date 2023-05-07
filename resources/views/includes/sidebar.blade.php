@@ -12,8 +12,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('pelamar.index') }}" aria-expanded="false">
-                    <i class="icon-people menu-icon"></i><span class="nav-text">Pelamar</span>
+                <a href="{{ route('penginapan.index') }}" aria-expanded="false">
+                    <i class="icon-home menu-icon"></i><span class="nav-text">Penginapan</span>
                 </a>
             </li>
             <li>

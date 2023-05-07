@@ -15,7 +15,7 @@ class MasterCriteriaSeeder extends Seeder
         $criteria = ['Harga Sewa', 'Lokasi', 'Fasilitas', 'Kebersihan', 'Keamanan'];
         $score = [0.5, 0.25, 0.5, 0.75, 1];
 
-        for($i = 0; $i < 4; $i++) {
+        for($i = 0; $i < 5; $i++) {
             DB::table('master_criterias')->insert([
                 'code' => $code[$i],
                 'criteria' => $criteria[$i],

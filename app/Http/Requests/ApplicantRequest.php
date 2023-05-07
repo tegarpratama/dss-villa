@@ -24,17 +24,14 @@ class ApplicantRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'interview_score' => 'required|integer'
+            'name' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Nama tidak boleh kosong.',
-            'interview_score.required' => 'Nilai wawancara tidak boleh kosong.',
-            'interview_score.integer' => 'Nilai wawancara harus berupa angka.',
+            'name.required' => 'Nama tidak boleh kosong.'
         ];
     }
 }

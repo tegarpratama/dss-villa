@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Rank extends Model
+class PriceCriteria extends Model
 {
     protected $guarded = [];
     public $timestamps = false;
 
-    public function applicant()
+    public function villa()
     {
-        return $this->belongsTo(Applicant::class);
+        return $this->hasOne(Villa::class);
     }
 }

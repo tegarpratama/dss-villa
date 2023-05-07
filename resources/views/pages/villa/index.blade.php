@@ -4,13 +4,13 @@
     <div class="card p-4">
         <div class="row">
             <div class="col">
-                <h4>Detail Data Pelamar</h4>
+                <h4>Data Penginapan</h4>
             </div>
             <div class="col d-flex flex-row-reverse">
-                <a href="{{ route('cetak.pelamar') }}" class="btn btn-outline-dark">
+                <a href="{{ route('cetak.penginapan') }}" class="btn btn-outline-dark">
                     <i class="icon-printer"></i>
                 </a>
-                <a href="{{ route('pelamar.create') }}" class="btn btn-info mr-3">
+                <a href="{{ route('penginapan.create') }}" class="btn btn-info mr-3">
                     Tambah
                 </a>
             </div>
@@ -32,29 +32,35 @@
                     <thead>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Pendidikan Terakhir</th>
-                        <th>Jurusan</th>
-                        <th>Pengalaman</th>
-                        <th>Wawancara</th>
+                        <th>Gambar</th>
+                        <th>Deskripsi</th>
+                        <th>Lokasi</th>
+                        <th>Harga</th>
+                        <th>Fasilitas</th>
+                        <th>Kebersihan</th>
+                        <th>Keamanan</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody>
-                        @forelse ($applicants as $applicant)
+                        @forelse ($villas as $v)
                             <tr>
-                                <td>{{ ($applicants->currentPage() - 1) * $applicants->perPage() + $loop->index + 1 }}</td>
-                                <td>{{ $applicant->name }}</td>
-                                <td>{{ $applicant->education->education }}</td>
-                                <td>{{ $applicant->major->major }}</td>
-                                <td>{{ $applicant->experience->experience }}</td>
-                                <td>{{ $applicant->interview_score }}</td>
+                                <td>{{ ($villas->currentPage() - 1) * $villas->perPage() + $loop->index + 1 }}</td>
+                                <td>{{ $v->name }}</td>
+                                <td>{{ $v->image }}</td>
+                                <td>{{ $v->description }}</td>
+                                <td>{{ $v->price->linguistic_value }}</td>
+                                <td>{{ $v->location->linguistic_value }}</td>
+                                <td>{{ $v->facility->linguistic_value }}</td>
+                                <td>{{ $v->hygiene->linguistic_value }}</td>
+                                <td>{{ $v->security->linguistic_value }}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-warning btn-sm text-white" href="{{ route('pelamar.edit', $applicant->id) }}">
+                                    <a class="btn btn-warning btn-sm text-white" href="{{ route('penginapan.edit', $v->id) }}">
                                         <i class="icon-pencil"></i>
                                     </a>
-                                    <form action="{{ route('pelamar.destroy', $applicant->id) }}" method="POST" class="delete d-inline">
+                                    <form action="{{ route('penginapan.destroy', $v->id) }}" method="POST" class="delete d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button onclick="return confirm('Hapus pelamar ini ?');" type="submit" class="btn btn-danger btn-sm">
+                                        <button onclick="return confirm('Hapus penginapan ini ?');" type="submit" class="btn btn-danger btn-sm">
                                             <i class="icon-trash"></i>
                                         </button>
                                     </form>
@@ -62,13 +68,13 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7">Data Pelamar Kosong</td>
+                                <td colspan="10">Data penginapan Kosong</td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
 
-                {{ $applicants->links() }}
+                {{ $villas->links() }}
             </div>
         </div>
     </div>

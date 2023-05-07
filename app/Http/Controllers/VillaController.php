@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ApplicantRequest;
 use App\Villa;
-use App\EducationCriteria;
-use App\ExperienceCriteria;
-use App\InterviewCriteria;
-use App\MajorCriteria;
+use App\LocationCriteria;
+use App\PriceCriteria;
+use App\HygieneCriteria;
+use App\FacilityCriteria;
+use App\SecurityCriteria;
 use App\Result;
 use PDF;
 
@@ -16,93 +17,97 @@ class VillaController extends Controller
 {
     public function index()
     {
-        $applicants = Applicant::with('education', 'experience', 'major')->paginate(10);
+        $villas = Villa::with('price', 'location', 'facility', 'hygiene', 'security')->paginate(10);
 
-        return view('pages.applicant.index', [
-            'applicants' => $applicants
+        return view('pages.villa.index', [
+            'villas' => $villas
         ]);
     }
 
     public function create()
     {
-        $educations = EducationCriteria::all();
-        $experiences = ExperienceCriteria::all();
-        $interviews = InterviewCriteria::all();
-        $majors = MajorCriteria::all();
+        $locations = LocationCriteria::all();
+        $prices = PriceCriteria::all();
+        $hygienes = HygieneCriteria::all();
+        $facilities = FacilityCriteria::all();
+        $securities = SecurityCriteria::all();
 
-        return view('pages.applicant.create', [
-            'educations' => $educations,
-            'experiences' => $experiences,
-            'interviews' => $interviews,
-            'majors' => $majors,
+        return view('pages.villa.create', [
+            'locations' => $locations,
+            'prices' => $prices,
+            'hygienes' => $hygienes,
+            'facilities' => $facilities,
+            'securities' => $securities,
         ]);
     }
 
     public function store(ApplicantRequest $request)
     {
         $data = $request->all();
+        $villa = Villa::create($data);
 
-        $applicant = Applicant::create($data);
+        $this->insertScoreVilla($villa);
 
-        $this->insertScoreApplicant($applicant);
-
-        return redirect()->route('pelamar.index')->with('status', 'Pelamar berhasil ditambahkan.');
+        return redirect()->route('penginapan.index')->with('status', 'Penginapan berhasil ditambahkan.');
     }
 
     public function edit($id)
     {
-        $applicant = Applicant::findOrFail($id);
-        $educations = EducationCriteria::all();
-        $experiences = ExperienceCriteria::all();
-        $interviews = InterviewCriteria::all();
-        $majors = MajorCriteria::all();
+        $villa = Villa::find($id);
+        $locations = LocationCriteria::all();
+        $prices = PriceCriteria::all();
+        $hygienes = HygieneCriteria::all();
+        $facilities = FacilityCriteria::all();
+        $securities = SecurityCriteria::all();
 
-        return view('pages.applicant.edit', [
-            'applicant' => $applicant,
-            'educations' => $educations,
-            'experiences' => $experiences,
-            'interviews' => $interviews,
-            'majors' => $majors,
+        return view('pages.villa.edit', [
+            'villa' => $villa,
+            'locations' => $locations,
+            'prices' => $prices,
+            'hygienes' => $hygienes,
+            'facilities' => $facilities,
+            'securities' => $securities,
         ]);
     }
 
     public function update(ApplicantRequest $request, $id)
     {
         $data = $request->all();
+        $villa = Villa::findOrFail($id);
+        $villa->update($data);
 
-        $applicant = Applicant::findOrFail($id);
-        $applicant->update($data);
+        $this->insertScoreVilla($villa);
 
-        $this->insertScoreApplicant($applicant);
-
-        return redirect()->route('pelamar.index')->with('status', 'Pelamar berhasil diperbarui.');
+        return redirect()->route('penginapan.index')->with('status', 'Penginapan berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
-        Applicant::findOrFail($id)->delete();
+        Villa::findOrFail($id)->delete();
 
-        return redirect()->route('pelamar.index')->with('status', 'Pelamar berhasil dihapus.');
+        return redirect()->route('penginapan.index')->with('status', 'Penginapan berhasil dihapus.');
     }
 
-    public function insertScoreApplicant($applicant)
+    public function insertScoreVilla($villa)
     {
-        $applicant_id = $applicant->id;
-        $education_score = EducationCriteria::find($applicant->education_criteria_id)->score;
-        $major_score = MajorCriteria::find($applicant->major_criteria_id)->score;
-        $experience_score = ExperienceCriteria::find($applicant->experience_criteria_id)->score;
-        $interview_score = $this->interviewScore($applicant->interview_score);
+        $villa_id = $villa->id;
+        $location_score = LocationCriteria::find($villa->location_criteria_id)->score;
+        $facility_score = FacilityCriteria::find($villa->facility_criteria_id)->score;
+        $price_score = PriceCriteria::find($villa->price_criteria_id)->score;
+        $hygiene_score = HygieneCriteria::find($villa->hygiene_criteria_id)->score;
+        $security_score = SecurityCriteria::find($villa->security_criteria_id)->score;
 
         $data = [
-            'applicant_id' => $applicant_id,
-            'education_score' => $education_score,
-            'major_score' => $major_score,
-            'experience_score' => $experience_score,
-            'interview_score' => $interview_score,
+            'villa_id' => $villa_id,
+            'location_score' => $location_score,
+            'facility_score' => $facility_score,
+            'price_score' => $price_score,
+            'hygiene_score' => $hygiene_score,
+            'security_score' => $security_score,
         ];
 
-        // check applicant exists
-        $result = Result::where('applicant_id', $applicant_id)->first();
+        // check villa exists
+        $result = Result::where('villa_id', $villa_id)->first();
 
         if($result) {
             $result->update($data);
@@ -113,25 +118,11 @@ class VillaController extends Controller
         return;
     }
 
-    public function interviewScore($interview)
+    public function PrintController()
     {
-        $interviewCriterias = InterviewCriteria::all();
-        $interviewScore;
+        $villas = Villa::with('education', 'experience', 'major')->get();
+        $pdf = PDF::loadView('pages.aplicant.print', $villas);
 
-        foreach($interviewCriterias as $ic) {
-            if($interview >= $ic->min_param && $interview <= $ic->max_param) {
-                $interviewScore = $ic->score;
-            }
-        }
-
-        return $interviewScore;
-    }
-
-    public function printApplicant()
-    {
-        $applicants = Applicant::with('education', 'experience', 'major')->get();
-        $pdf = PDF::loadView('pages.aplicant.print', $applicants);
-
-        return $pdf->download('data-pelamar.pdf');
+        return $pdf->download('data-penginapan.pdf');
     }
 }

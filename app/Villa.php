@@ -7,20 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 class Villa extends Model
 {
     protected $guarded = [];
+    public $timestamps = false;
 
-    public function education()
+    public function price()
     {
-        return $this->belongsTo(EducationCriteria::class, 'education_criteria_id', 'id');
+        return $this->belongsTo(PriceCriteria::class, 'price_criteria_id', 'id');
     }
 
-    public function experience()
+    public function location()
     {
-        return $this->belongsTo(ExperienceCriteria::class, 'experience_criteria_id', 'id');
+        return $this->belongsTo(LocationCriteria::class,  'location_criteria_id', 'id');
     }
 
-    public function major()
+    public function facility()
     {
-        return $this->belongsTo(MajorCriteria::class, 'major_criteria_id', 'id');
+        return $this->belongsTo(FacilityCriteria::class, 'facility_criteria_id', 'id');
+    }
+ 
+    public function hygiene()
+    {
+        return $this->belongsTo(HygieneCriteria::class, 'hygiene_criteria_id', 'id');
+    }
+   
+    public function security()
+    {
+        return $this->belongsTo(SecurityCriteria::class, 'security_criteria_id', 'id');
     }
 
     public function result()

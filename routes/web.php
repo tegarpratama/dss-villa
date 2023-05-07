@@ -28,10 +28,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     // Profile
     Route::resource('/profile', 'ProfileController');
-
-    // Pelamar
-    Route::resource('/pelamar', 'ApplicantController');
-    Route::get('/cetak-pelamar', 'PrintController@printApplicant')->name('cetak.pelamar');
+   
+    // Penginapan
+    Route::resource('/penginapan', 'VillaController');
+    Route::get('/cetak-penginapan', 'PrintController@printVilla')->name('cetak.penginapan');
 
     // Kriteria
     Route::resource('/kriteria/penerimaan', 'AcceptanceCriteriaController');

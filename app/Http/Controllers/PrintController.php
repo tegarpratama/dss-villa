@@ -13,7 +13,7 @@ class PrintController extends Controller
     public function printApplicant()
     {
         $applicants = Applicant::with('education', 'experience', 'major')->get();
-        $pdf = PDF::loadView('pages.applicant.print', [
+        $pdf = PDF::loadView('pages.villa.print', [
             'applicants' => $applicants
         ]);
 
