@@ -21,11 +21,12 @@
                 <table class="table text-center">
                     <thead>
                         <th>No</th>
-                        <th>Nama Lengkap</th>
-                        <th>Pendidikan</th>
-                        <th>Jurusan</th>
-                        <th>Pengalaman</th>
-                        <th>Wawancara</th>
+                        <th>Penginapan</th>
+                        <th>Harga Sewa</th>
+                        <th>Lokasi</th>
+                        <th>Fasilitas</th>
+                        <th>Kebersihan</th>
+                        <th>Keamanan</th>
                         <th>Total</th>
                         <th>Ranking</th>
                     </thead>
@@ -33,11 +34,12 @@
                         @forelse ($ranks as $rank)
                             <tr>
                                 <td>{{ ($ranks->currentPage() - 1) * $ranks->perPage() + $loop->index + 1 }}</td>
-                                <td>{{ $rank->applicant->name }}</td>
-                                <td>{{ $rank->education_result }}</td>
-                                <td>{{ $rank->major_result }}</td>
-                                <td>{{ $rank->experience_result }}</td>
-                                <td>{{ $rank->interview_result }}</td>
+                                <td>{{ $rank->villa->name }}</td>
+                                <td>{{ $rank->price_result }}</td>
+                                <td>{{ $rank->location_result }}</td>
+                                <td>{{ $rank->facility_result }}</td>
+                                <td>{{ $rank->hygiene_result }}</td>
+                                <td>{{ $rank->security_result }}</td>
                                 <td>{{ $rank->total }}</td>
                                 <td>{{ ($ranks->currentPage() - 1) * $ranks->perPage() + $loop->index + 1 }}</td>
                             </tr>

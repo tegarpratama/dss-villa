@@ -9,7 +9,7 @@ class ResultController extends Controller
 {
     public function index()
     {
-        $results = Result::with(['applicant'])->paginate(10);
+        $results = Result::with(['villa'])->paginate(10);
 
         return view('pages.result.index', [
             'results' => $results

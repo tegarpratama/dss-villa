@@ -11,6 +11,7 @@ use App\HygieneCriteria;
 use App\FacilityCriteria;
 use App\SecurityCriteria;
 use App\Result;
+use DB;
 use PDF;
 
 class VillaController extends Controller
@@ -84,6 +85,8 @@ class VillaController extends Controller
     public function destroy($id)
     {
         Villa::findOrFail($id)->delete();
+        DB::table('results')->where('villa_id', $id)->delete();
+        DB::table('ranks')->where('villa_id', $id)->delete();
 
         return redirect()->route('penginapan.index')->with('status', 'Penginapan berhasil dihapus.');
     }

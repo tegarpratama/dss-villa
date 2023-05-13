@@ -10,19 +10,19 @@ use PDF;
 
 class PrintController extends Controller
 {
-    public function printApplicant()
-    {
-        $applicants = Applicant::with('education', 'experience', 'major')->get();
-        $pdf = PDF::loadView('pages.villa.print', [
-            'applicants' => $applicants
-        ]);
+    // public function printApplicant()
+    // {
+    //     $applicants = Applicant::with('education', 'experience', 'major')->get();
+    //     $pdf = PDF::loadView('pages.villa.print', [
+    //         'applicants' => $applicants
+    //     ]);
 
-        return $pdf->download('data-pelamar.pdf');
-    }
+    //     return $pdf->download('data-pelamar.pdf');
+    // }
 
     public function printResult()
     {
-        $results = Result::with(['applicant'])->get();
+        $results = Result::with(['villa'])->get();
         $pdf = PDF::loadView('pages.result.print', [
             'results' => $results
         ]);
@@ -32,7 +32,7 @@ class PrintController extends Controller
 
     public function printRank()
     {
-        $ranks = Rank::with('applicant')->orderBy('total', 'desc')->get();
+        $ranks = Rank::with('villa')->orderBy('total', 'desc')->get();
         $pdf = PDF::loadView('pages.rank.print', [
             'ranks' => $ranks
         ]);

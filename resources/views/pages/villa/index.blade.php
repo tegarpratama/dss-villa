@@ -7,9 +7,9 @@
                 <h4>Data Penginapan</h4>
             </div>
             <div class="col d-flex flex-row-reverse">
-                <a href="{{ route('cetak.penginapan') }}" class="btn btn-outline-dark">
+                {{-- <a href="{{ route('cetak.penginapan') }}" class="btn btn-outline-dark">
                     <i class="icon-printer"></i>
-                </a>
+                </a> --}}
                 <a href="{{ route('penginapan.create') }}" class="btn btn-info mr-3">
                     Tambah
                 </a>
@@ -32,8 +32,6 @@
                     <thead>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Gambar</th>
-                        <th>Deskripsi</th>
                         <th>Lokasi</th>
                         <th>Harga</th>
                         <th>Fasilitas</th>
@@ -46,8 +44,6 @@
                             <tr>
                                 <td>{{ ($villas->currentPage() - 1) * $villas->perPage() + $loop->index + 1 }}</td>
                                 <td>{{ $v->name }}</td>
-                                <td>{{ $v->image }}</td>
-                                <td>{{ $v->description }}</td>
                                 <td>{{ $v->price->linguistic_value }}</td>
                                 <td>{{ $v->location->linguistic_value }}</td>
                                 <td>{{ $v->facility->linguistic_value }}</td>

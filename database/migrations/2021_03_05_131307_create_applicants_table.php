@@ -16,8 +16,6 @@ class CreateApplicantsTable extends Migration
         Schema::create('villas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('image')->nullable();
-            $table->text('description')->nullable();
             $table->foreignId('price_criteria_id');
             $table->foreignId('location_criteria_id');
             $table->foreignId('facility_criteria_id');

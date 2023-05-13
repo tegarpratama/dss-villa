@@ -32,26 +32,28 @@
     </style>
 </head>
 <body>
-    <center><h2>Data Nilai Pelamar</h2></center>
+    <center><h2>Data Nilai Penginapan</h2></center>
     <hr>
     <table>
         <tr>
             <th>No</th>
-            <th>Nama</th>
-            <th>Pendidikan Terakhir</th>
-            <th>Jurusan</th>
-            <th>Pengalaman</th>
-            <th>Wawancara</th>
+            <th>Penginapan</th>
+            <th>Harga Sewa</th>
+            <th>Lokasi</th>
+            <th>Fasilitas</th>
+            <th>Kebersihan</th>
+            <th>Keamanan</th>
         </tr>
         <tbody>
         @foreach ($results as $result)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $result->applicant->name }}</td>
-                <td>{{ $result->education_score }}</td>
-                <td>{{ $result->major_score }}</td>
-                <td>{{ $result->experience_score }}</td>
-                <td>{{ $result->interview_score }}</td>
+                <td>{{ $result->villa->name }}</td>
+                <td>{{ $result->price_score }}</td>
+                <td>{{ $result->location_score }}</td>
+                <td>{{ $result->facility_score }}</td>
+                <td>{{ $result->hygiene_score }}</td>
+                <td>{{ $result->security_score }}</td>
             </tr>
         @endforeach
         </tbody>
