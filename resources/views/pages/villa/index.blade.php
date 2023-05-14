@@ -32,8 +32,8 @@
                     <thead>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Lokasi</th>
                         <th>Harga</th>
+                        <th>Lokasi</th>
                         <th>Fasilitas</th>
                         <th>Kebersihan</th>
                         <th>Keamanan</th>

@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/cetak-penginapan', 'PrintController@printVilla')->name('cetak.penginapan');
 
     // Kriteria
+    Route::resource('/kriteria/penerimaan', 'AcceptanceCriteriaController');
     Route::resource('/kriteria/harga', 'PriceCriteriaController');
     Route::resource('/kriteria/lokasi', 'LocationCriteriaController');
     Route::resource('/kriteria/fasilitas', 'FacilityCriteriaController');
