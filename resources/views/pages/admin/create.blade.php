@@ -4,7 +4,7 @@
     <div class="card p-4">
         <div class="row">
             <div class="col">
-                <h4>Tambah Data Admin</h4>
+                <h4>Tambah Data User</h4>
             </div>
         </div>
         <div class="row mt-4">

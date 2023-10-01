@@ -6,7 +6,7 @@
             <div class="card p-4">
                 <div class="row">
                     <div class="col">
-                        <h4>Data Admin</h4>
+                        <h4>Data User</h4>
                     </div>
                     <div class="col d-flex flex-row-reverse">
                         <a href="{{ route('admin.create') }}" class="btn btn-info">
