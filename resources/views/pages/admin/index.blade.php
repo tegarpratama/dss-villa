@@ -31,7 +31,8 @@
                             <thead>
                                 <th>No</th>
                                 <th>Nama Lengkap</th>
-                                <th>Email</th>
+                                <th>Username</th>
+                                <th>Role</th>
                                 <th>Aksi</th>
                             </thead>
                             <tbody>
@@ -39,7 +40,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $admin->name }}</td>
-                                        <td>{{ $admin->email }}</td>
+                                        <td>{{ $admin->username }}</td>
+                                        <td>{{ $admin->role }}</td>
                                         @if ($admin->id != auth()->user()->id )
                                             <td class="text-center">
                                                 <form action="{{ route('admin.destroy', $admin->id) }}" method="POST" class="delete d-inline">

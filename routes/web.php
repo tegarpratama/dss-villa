@@ -13,13 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes([
-    'register' => false,
-    'reset' => false,
-    'verify' => false,
-]);
+// Auth::routes([
+//     'register' => false,
+//     'reset' => false,
+//     'verify' => false,
+// ]);
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('/login', 'LoginController@index')->name('login.index');
+    Route::post('/login/action', 'LoginController@post')->name('login.post');
+});
+
+Route::group(['middleware' => ['auth']], function() {    
     // Home
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
@@ -49,4 +54,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/hasil', 'RankController@index')->name('hasil.index');
     Route::get('/hasil/refresh', 'RankController@refresh')->name('hasil.refresh');
     Route::get('/cetak-hasil', 'PrintController@printRank')->name('cetak.hasil');
+
+    // Logout
+    Route::post('/logout', 'LoginController@logout')->name('logout');
 });

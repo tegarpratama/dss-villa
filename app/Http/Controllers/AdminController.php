@@ -27,17 +27,18 @@ class AdminController extends Controller
     {
         User::create([
             'name' => $request->name,
-            'email' => $request->email,
+            'username' => $request->username,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('admin.index')->with('status', 'Admin berhasil ditambahkan.');
+        return redirect()->route('admin.index')->with('status', 'User berhasil ditambahkan.');
     }
 
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
 
-        return redirect()->route('admin.index')->with('status', 'Admin berhasil dihapus.');
+        return redirect()->route('admin.index')->with('status', 'User berhasil dihapus.');
     }
 }

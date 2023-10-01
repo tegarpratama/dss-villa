@@ -40,10 +40,10 @@
                                     </div>
                                 @enderror
 
-                                <form method="POST" action="{{ route('login') }}" class="mt-4 mb-5 login-input">
+                                <form method="POST" action="{{ route('login.post') }}" class="mt-4 mb-5 login-input">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control pl-3" name="email" placeholder="Email" required autocomplete="email" autofocus>
+                                        <input type="text" class="form-control pl-3" name="username" placeholder="Username" required autofocus>
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control pl-3" placeholder="Password" name="password" required autocomplete="current-password">

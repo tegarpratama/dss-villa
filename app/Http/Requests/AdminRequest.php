@@ -25,7 +25,7 @@ class AdminRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'username' => 'required|unique:users,username',
             'password' => 'required|min:6',
             'password_confirm' => 'required|same:password'
         ];
@@ -35,9 +35,9 @@ class AdminRequest extends FormRequest
     {
         return [
             'name.required' => 'Nama tidak boleh kosong.',
-            'email.required' => 'Email tidak boleh kosong.',
-            'email.email' => 'Email tidak valid.',
-            'email.unique' => 'Email sudah terdaftar.',
+            'username.required' => 'Email tidak boleh kosong.',
+            'username.email' => 'Email tidak valid.',
+            'username.unique' => 'Email sudah terdaftar.',
             'password.required' => 'Password tidak boleh kosong.',
             'password_confirm.required' => 'Konfirmasi password tidak boleh kosong.',
             'password_confirm.same' => 'Konfirmasi password harus sesuai.',

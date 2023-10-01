@@ -19,11 +19,23 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
-                        @error('email')
+                        <label>Username</label>
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}">
+                        @error('username')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
+                    </div>
+                    <div class="form-group">
+                        <label>Role</label>
+                        <br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="inlineCheckbox1" value="admin" name="role" checked>
+                            <label class="form-check-label" for="inlineCheckbox1">Admin</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="inlineCheckbox2" value="user" name="role">
+                            <label class="form-check-label" for="inlineCheckbox2">User</label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
